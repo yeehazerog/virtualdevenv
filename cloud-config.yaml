@@ -1,15 +1,21 @@
 #cloud-config
 
-users:
-  - name: dev
-    sudo: ['ALL=(ALL) NOPASSWD:ALL']
-    groups: sudo
-    shell: /bin/bash
+#users:
+#  - name: dev
+#    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+#    groups: sudo
+#    shell: /bin/bash
 
 package_update: true
 
 packages:
+ - snap
  - git
 
 runcmd:
- - echo "Hello"
+ - echo "MicroK8s template"
+ - apt update --fix-missing
+ - snap refresh
+ - snap install microk8s
+ - microk8s status --wait-ready
+ - microk8s enable dns ingress' > cloud-config-microk8s.yaml
