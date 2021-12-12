@@ -14,4 +14,4 @@ runcmd:
  - microk8s enable dns ingress' > cloud-config-microk8s.yaml
  - sudo usermod -a -G microk8s multipass
  - /snap/bin/microk8s.config > kubeconfig
- - kubectl --kubeconfig=kubeconfig get all --all-namespaces
+ - microk8s kubectl --kubeconfig=kubeconfig get all --all-namespaces
